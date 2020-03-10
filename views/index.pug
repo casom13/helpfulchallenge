@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  div(class='row row-grid', style="width: 100%; justify-content: space-around")
+    each val in colors
+      a(href='/color/' + val.id)
+        div(class='swatch', style='background-color: ' + val.hex + ';')
+          div(class='label')
+            span(class='label', href='/color/' + val.id)= val.hex
+    else
+      p There are no values
+  div(class='row')
+    - let n = 1;
+    ul(class="pagination")
+          while n < count
+            if( n === parseInt( page ) )
+              li(class="page-item active")
+                a(class='page-link', href='/page/'+n )= n
+            else
+              li(class="page-item")
+                a(class='page-link', href='/page/'+n )= n
+            - n++

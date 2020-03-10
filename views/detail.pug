@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    each color in colors
+        div(class='row', style="width: 100%; justify-content: space-around")
+            div(class='swatch single-swatch col-sm-12', style='background-color: ' + color.hex + ';')
+                div(class='label')
+                    a(class='label', href='/color/' + color.id)= color.hex
+            a(href="/")
+                button(class='clear') Clear
