@@ -11,12 +11,14 @@ block content
       p There are no values
   div(class='row')
     - let n = 1;
-    ul(class="pagination")
-          while n < count
-            if( n === parseInt( page ) )
-              li(class="page-item active")
-                a(class='page-link', href='/page/'+n )= n
-            else
-              li(class="page-item")
-                a(class='page-link', href='/page/'+n )= n
-            - n++
+    if (count > 2)
+      ul(class="pagination")
+            while n < count
+              - let link = (term) ? "/search/"+term+"/"+n : '/page/'+n;
+              if( n === parseInt( page ) )
+                li(class="page-item active")
+                  a(class='page-link', href=link )= n
+              else
+                li(class="page-item")
+                  a(class='page-link', href=link )= n
+              - n++
